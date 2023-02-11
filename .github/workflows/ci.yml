@@ -1,0 +1,16 @@
+name: Custom Testing
+on:
+  push:
+    branches:
+      - '**'
+      - '!master'
+jobs:
+  Pytest:
+    runs-on: ubuntu-latest
+    container: python:3.10.6-alpine
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Python Dependencies
+        run: pip install --upgrade pip && pip install Flask pytest
+      - name: Run Python Unit Tests
+        run: python3 -m pytest tests/

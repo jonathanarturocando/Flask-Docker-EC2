@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  devsu-docker:
+    build: .
+    image: devsu-docker:latest
+    deploy:
+      replicas: 2
+    restart: always
+    expose:
+      - 5000
+  
+  proxy:
+    image: nginx:1.18-alpine
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+    depends_on:
+      - devsu-docker
