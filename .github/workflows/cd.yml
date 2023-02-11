@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build docker image
-        run: docker build -t jonathanarturocando/devsu-devops:${{ vars.GITHUB_SHA }}
+        run: docker build -t jonathanarturocando/devsu-devops:${{ vars.GITHUB_SHA }} .
       - name: Push docker image
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username jonathanarturocando --password-stdin
