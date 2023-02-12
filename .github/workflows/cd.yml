@@ -38,4 +38,4 @@ jobs:
           username: ${{ secrets.SSH_USER_NAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/devsu-devops && docker-compose up -d
+            cd ~/devsu-devops && docker compose up -d
