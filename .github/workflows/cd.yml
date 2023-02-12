@@ -31,3 +31,11 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "."
           target: "/home/ec2-user/devsu-devops"
+      - name: Deploying Docker container ...
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.SSH_USER_NAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/devsu-devops && docker-compose up -d
